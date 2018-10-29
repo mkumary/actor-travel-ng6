@@ -1,0 +1,23 @@
+.grid-container {
+  position: relative;
+}
+.actor-container {
+  position: absolute;
+}
+.actor-wrapper {
+  position: relative;
+}
+.actor {
+  position: absolute;
+  top: -36px;
+  left: 22px;
+}
+
+tr {
+  border: solid 1px blue;
+}
+td {
+  border: solid 1px blue;
+  height: 50px;
+  width: 50px;
+}
