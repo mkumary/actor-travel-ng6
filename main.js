@@ -410,17 +410,9 @@ var GridSizeInputComponent = /** @class */ (function () {
         this.steps = [];
         this.allowedMoving = true;
         this.movementStep = 56;
-        this.element = null;
-        this.containerX = 0;
-        this.containerY = 0;
-        this.containerWidth = 0;
-        this.containerHeight = 0;
-        this.moveQueue = [];
-        this.moving = false;
     }
     GridSizeInputComponent.prototype.ngOnInit = function () {
         this.steps = this.actorService.getSteps();
-        this.element = document.getElementById("actor");
     };
     GridSizeInputComponent.prototype.onSizeChange = function (event) {
         this.size = event.target.value;
@@ -428,151 +420,80 @@ var GridSizeInputComponent = /** @class */ (function () {
             size: event.target.value
         });
     };
-    GridSizeInputComponent.prototype.setBoundries = function () {
+    GridSizeInputComponent.prototype.checkBoundary = function () {
         var element = document.getElementsByTagName("table")[0];
         var boundries = element.getBoundingClientRect();
-        this.containerX = boundries.x;
-        this.containerY = boundries.y;
-        this.containerWidth = boundries.width;
-        this.containerHeight = boundries.height;
         return boundries;
     };
     GridSizeInputComponent.prototype.onStepAdded = function () {
         this.steps = this.actorService.getSteps();
     };
-    GridSizeInputComponent.prototype.canMoveUp = function () {
-        return (Math.abs(this.element.offsetTop) -
-            this.containerHeight +
-            this.movementStep <
-            this.containerX);
-    };
-    GridSizeInputComponent.prototype.canMoveDown = function () {
-        return Math.abs(this.element.offsetTop) - this.movementStep > 0;
-    };
-    GridSizeInputComponent.prototype.canmoveLeft = function () {
-        return this.element.offsetLeft > this.containerX + this.movementStep / 2;
-    };
-    GridSizeInputComponent.prototype.canMoveRight = function () {
-        return this.element.offsetLeft < this.containerX + this.containerWidth;
-    };
-    GridSizeInputComponent.prototype.moveUp = function () {
-        var _this = this;
-        if (this.canMoveUp()) {
-            var x_1 = 0;
-            var intervalId_1;
-            var travel = function () {
-                if (x_1 < _this.movementStep) {
-                    x_1 = x_1 + 1;
-                    _this.element.style.top = _this.element.offsetTop - 1 + "px";
-                }
-                else {
-                    clearInterval(intervalId_1);
-                    _this.moving = false;
-                    _this.move();
-                }
-            };
-            intervalId_1 = setInterval(travel, 5);
-        }
-        else {
-            this.allowedMoving = false;
-        }
-    };
-    GridSizeInputComponent.prototype.moveDown = function () {
-        var _this = this;
-        if (this.canMoveDown()) {
-            var x_2 = 0;
-            var intervalId_2;
-            var travel = function () {
-                if (x_2 < _this.movementStep) {
-                    x_2 = x_2 + 1;
-                    _this.element.style.top = _this.element.offsetTop + 1 + "px";
-                }
-                else {
-                    clearInterval(intervalId_2);
-                    _this.moving = false;
-                    _this.move();
-                }
-            };
-            intervalId_2 = setInterval(travel, 5);
-        }
-        else {
-            this.allowedMoving = false;
-        }
-    };
-    GridSizeInputComponent.prototype.moveLeft = function () {
-        var _this = this;
-        if (this.canmoveLeft()) {
-            var x_3 = 0;
-            var intervalId_3;
-            var travel = function () {
-                if (x_3 < _this.movementStep) {
-                    x_3 = x_3 + 1;
-                    _this.element.style.left = _this.element.offsetLeft - 1 + "px";
-                }
-                else {
-                    clearInterval(intervalId_3);
-                    _this.moving = false;
-                    _this.move();
-                }
-            };
-            intervalId_3 = setInterval(travel, 5);
-        }
-        else {
-            this.allowedMoving = false;
-        }
-    };
-    GridSizeInputComponent.prototype.moveRight = function () {
-        var _this = this;
-        if (this.canMoveRight()) {
-            var x_4 = 0;
-            var intervalId_4;
-            var travel = function () {
-                if (x_4 < _this.movementStep) {
-                    x_4 = x_4 + 1;
-                    _this.element.style.left = _this.element.offsetLeft + 1 + "px";
-                }
-                else {
-                    clearInterval(intervalId_4);
-                    _this.moving = false;
-                    _this.move();
-                }
-            };
-            intervalId_4 = setInterval(travel, 5);
-        }
-        else {
-            this.allowedMoving = false;
-        }
-    };
-    GridSizeInputComponent.prototype.move = function () {
-        if (this.moving === false && this.allowedMoving) {
-            var move = this.moveQueue.shift();
-            if (move) {
-                this.moving = true;
-                if (move === "up") {
-                    this.moveUp();
-                }
-                if (move === "down") {
-                    this.moveDown();
-                }
-                if (move === "left") {
-                    this.moveLeft();
-                }
-                if (move === "right") {
-                    this.moveRight();
-                }
-            }
-            else {
-                console.log("movements stopped");
-            }
-        }
-        else if (!this.allowedMoving) {
-            this.steps = [];
-        }
-    };
     GridSizeInputComponent.prototype.onMoveTarget = function (event) {
-        var boundries = this.setBoundries();
-        this.moveQueue = event.moveNames;
-        this.move();
+        var _this = this;
+        var boundries = this.checkBoundary();
+        var moveNames = event.moveNames;
+        var element = document.getElementById("actor");
+        moveNames.forEach(function (moveName) {
+            var elementBoundry = element.getBoundingClientRect();
+            if (!_this.allowedMoving) {
+                console.log("you can not move beyond this");
+                return;
+            }
+            if (moveName === "up") {
+                var top_1 = elementBoundry.top;
+                top_1 = top_1 - _this.movementStep;
+                if (top_1 < boundries.top) {
+                    _this.allowedMoving = false;
+                    console.log("you can not move beyond this");
+                    return;
+                }
+                else {
+                    top_1 = element.offsetTop - _this.movementStep;
+                    element.style.top = top_1 + "px";
+                }
+            }
+            if (moveName === "down") {
+                var top_2 = elementBoundry.bottom;
+                top_2 = top_2 + _this.movementStep;
+                if (top_2 > boundries.bottom) {
+                    _this.allowedMoving = false;
+                    console.log("you can not move beyond this");
+                    return;
+                }
+                else {
+                    top_2 = element.offsetTop + _this.movementStep;
+                    element.style.top = top_2 + "px";
+                }
+            }
+            if (moveName === "left") {
+                var left = elementBoundry.left;
+                left = left - 50;
+                if (left < boundries.left) {
+                    _this.allowedMoving = false;
+                    console.log("you can not move beyond this");
+                    return;
+                }
+                else {
+                    left = element.offsetLeft - _this.movementStep;
+                    element.style.left = left + "px";
+                }
+            }
+            if (moveName === "right") {
+                var left = elementBoundry.right;
+                left = left + 50;
+                if (left > boundries.right) {
+                    _this.allowedMoving = false;
+                    console.log("you can not move beyond this");
+                    return;
+                }
+                else {
+                    left = element.offsetLeft + _this.movementStep;
+                    element.style.left = left + "px";
+                }
+            }
+        });
+        this.steps = [];
+        this.allowedMoving = true;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
