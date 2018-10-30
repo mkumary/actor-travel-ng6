@@ -17,10 +17,18 @@ export class GridSizeInputComponent implements OnInit {
   steps = [];
   allowedMoving = true;
   movementStep = 56;
+  element = null;
+  containerX = 0;
+  containerY = 0;
+  containerWidth = 0;
+  containerHeight = 0;
 
   ngOnInit() {
     this.steps = this.actorService.getSteps();
+    this.element = document.getElementById("actor");
   }
+  moveQueue = [];
+  moving = false;
 
   onSizeChange(event) {
     this.size = event.target.value;
@@ -28,74 +36,139 @@ export class GridSizeInputComponent implements OnInit {
       size: event.target.value
     });
   }
-  checkBoundary() {
+  setBoundries() {
     let element = document.getElementsByTagName("table")[0];
-    let boundries: ClientRect = element.getBoundingClientRect();
+    let boundries: any = element.getBoundingClientRect();
+    this.containerX = boundries.x;
+    this.containerY = boundries.y;
+    this.containerWidth = boundries.width;
+    this.containerHeight = boundries.height;
     return boundries;
   }
   onStepAdded() {
     this.steps = this.actorService.getSteps();
   }
+  canMoveUp() {
+    return (
+      Math.abs(this.element.offsetTop) -
+        this.containerHeight +
+        this.movementStep <
+      this.containerX
+    );
+  }
+  canMoveDown() {
+    return Math.abs(this.element.offsetTop) - this.movementStep > 0;
+  }
+  canmoveLeft() {
+    return this.element.offsetLeft > this.containerX + this.movementStep / 2;
+  }
+  canMoveRight() {
+    return this.element.offsetLeft < this.containerX + this.containerWidth;
+  }
+  moveUp() {
+    if (this.canMoveUp()) {
+      let x = 0;
+      let intervalId;
+      const travel = () => {
+        if (x < this.movementStep) {
+          x = x + 1;
+          this.element.style.top = this.element.offsetTop - 1 + "px";
+        } else {
+          clearInterval(intervalId);
+          this.moving = false;
+          this.move();
+        }
+      };
+      intervalId = setInterval(travel, 5);
+    } else {
+      this.allowedMoving = false;
+    }
+  }
+  moveDown() {
+    if (this.canMoveDown()) {
+      let x = 0;
+      let intervalId;
+      const travel = () => {
+        if (x < this.movementStep) {
+          x = x + 1;
+          this.element.style.top = this.element.offsetTop + 1 + "px";
+        } else {
+          clearInterval(intervalId);
+          this.moving = false;
+          this.move();
+        }
+      };
+      intervalId = setInterval(travel, 5);
+    } else {
+      this.allowedMoving = false;
+    }
+  }
+  moveLeft() {
+    if (this.canmoveLeft()) {
+      let x = 0;
+      let intervalId;
+      const travel = () => {
+        if (x < this.movementStep) {
+          x = x + 1;
+          this.element.style.left = this.element.offsetLeft - 1 + "px";
+        } else {
+          clearInterval(intervalId);
+          this.moving = false;
+          this.move();
+        }
+      };
+      intervalId = setInterval(travel, 5);
+    } else {
+      this.allowedMoving = false;
+    }
+  }
+  moveRight() {
+    if (this.canMoveRight()) {
+      let x = 0;
+      let intervalId;
+      const travel = () => {
+        if (x < this.movementStep) {
+          x = x + 1;
+          this.element.style.left = this.element.offsetLeft + 1 + "px";
+        } else {
+          clearInterval(intervalId);
+          this.moving = false;
+          this.move();
+        }
+      };
+      intervalId = setInterval(travel, 5);
+    } else {
+      this.allowedMoving = false;
+    }
+  }
+  move() {
+    if (this.moving === false && this.allowedMoving) {
+      var move = this.moveQueue.shift();
+      if (move) {
+        this.moving = true;
+        if (move === "up") {
+          this.moveUp();
+        }
+        if (move === "down") {
+          this.moveDown();
+        }
+        if (move === "left") {
+          this.moveLeft();
+        }
+        if (move === "right") {
+          this.moveRight();
+        }
+      } else {
+        console.log("movements stopped");
+      }
+    } else if (!this.allowedMoving) {
+      this.steps = [];
+    }
+  }
+
   onMoveTarget(event) {
-    var boundries = this.checkBoundary();
-    let moveNames = event.moveNames;
-    var element = document.getElementById("actor");
-    moveNames.forEach(moveName => {
-      let elementBoundry = element.getBoundingClientRect();
-      if (!this.allowedMoving) {
-        console.log("you can not move beyond this");
-        return;
-      }
-      if (moveName === "up") {
-        let top: number = elementBoundry.top;
-        top = top - this.movementStep;
-        if (top < boundries.top) {
-          this.allowedMoving = false;
-          console.log("you can not move beyond this");
-          return;
-        } else {
-          top = element.offsetTop - this.movementStep;
-          element.style.top = top + "px";
-        }
-      }
-      if (moveName === "down") {
-        let top: number = elementBoundry.bottom;
-        top = top + this.movementStep;
-        if (top > boundries.bottom) {
-          this.allowedMoving = false;
-          console.log("you can not move beyond this");
-          return;
-        } else {
-          top = element.offsetTop + this.movementStep;
-          element.style.top = top + "px";
-        }
-      }
-      if (moveName === "left") {
-        let left: number = elementBoundry.left;
-        left = left - 50;
-        if (left < boundries.left) {
-          this.allowedMoving = false;
-          console.log("you can not move beyond this");
-          return;
-        } else {
-          left = element.offsetLeft - this.movementStep;
-          element.style.left = left + "px";
-        }
-      }
-      if (moveName === "right") {
-        let left: number = elementBoundry.right;
-        left = left + 50;
-        if (left > boundries.right) {
-          this.allowedMoving = false;
-          console.log("you can not move beyond this");
-          return;
-        } else {
-          left = element.offsetLeft + this.movementStep;
-          element.style.left = left + "px";
-        }
-      }
-    });
-    this.steps = [];
-    this.allowedMoving = true;
+    var boundries = this.setBoundries();
+    this.moveQueue = event.moveNames;
+    this.move();
   }
 }
