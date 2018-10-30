@@ -1,9 +1,6 @@
 <input [ngModel]="size" type="text" (change)="onSizeChange($event)">
-<!--
-    this component will recieve a method called movetarget
--->
+<app-action-buttons (stepAdded)="onStepAdded($event)" (moveActor)="onMoveTarget($event)"></app-action-buttons>
 <div class="container">
     <app-grid-plot [size]="size" [moveNames]="moveName"></app-grid-plot>
-    <app-action-buttons (stepAdded)="onStepAdded($event)" (moveActor)="onMoveTarget($event)"></app-action-buttons>
     <app-steps-list [steps]="steps"></app-steps-list>
 </div>

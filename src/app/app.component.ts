@@ -7,7 +7,7 @@ import { Component, Input } from "@angular/core";
 })
 export class AppComponent {
   title = "luxoft-assignment";
-  size = 6;
+  size = 10;
   onUpdate(event) {
     this.size = event.size;
   }
