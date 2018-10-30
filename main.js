@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FjdGlvbi1idXR0b25zL2FjdGlvbi1idXR0b25zLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = "button {\n  color: #fff;\n  background-color: #007bff;\n  border-color: #007bff;\n  cursor: pointer;\n  padding: 6px;\n  margin: 20px;\n  width: 80px;\n}\nbutton:hover {\n  background-color: #2f80ff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWN0aW9uLWJ1dHRvbnMvYWN0aW9uLWJ1dHRvbnMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQVk7RUFDWiwwQkFBMEI7RUFDMUIsc0JBQXNCO0VBQ3RCLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IsYUFBYTtFQUNiLFlBQVk7Q0FDYjtBQUNEO0VBQ0UsMEJBQTBCO0NBQzNCIiwiZmlsZSI6InNyYy9hcHAvYWN0aW9uLWJ1dHRvbnMvYWN0aW9uLWJ1dHRvbnMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJ1dHRvbiB7XG4gIGNvbG9yOiAjZmZmO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDA3YmZmO1xuICBib3JkZXItY29sb3I6ICMwMDdiZmY7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgcGFkZGluZzogNnB4O1xuICBtYXJnaW46IDIwcHg7XG4gIHdpZHRoOiA4MHB4O1xufVxuYnV0dG9uOmhvdmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzJmODBmZjtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <button (click)=\"moveUp()\"> Up </button>\n  <button (click)=\"moveDown()\"> Down </button>\n  <button (click)=\"moveLeft()\"> LEFT </button>\n  <button (click)=\"moveRight()\"> RIGHT </button>\n  <button (click)=\"play()\"> PLAY </button>\n</div>"
+module.exports = "<div>\n  <button (click)=\"moveUp()\"> Up </button>\n  <button (click)=\"moveDown()\"> Down </button>\n  <button (click)=\"moveLeft()\"> LEFT </button>\n  <button (click)=\"moveRight()\"> RIGHT </button>\n  <button (click)=\"play()\"> ▶️ PLAY </button>\n</div>"
 
 /***/ }),
 
@@ -177,7 +177,7 @@ var ActorService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\n  display: flex;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0NBQ2YiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuIl19 */"
+module.exports = ".container {\n  display: flex;\n}\n.input-container {\n  margin: auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0NBQ2Y7QUFDRDtFQUNFLGFBQWE7Q0FDZCIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG4uaW5wdXQtY29udGFpbmVyIHtcbiAgbWFyZ2luOiBhdXRvO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -188,7 +188,7 @@ module.exports = ".container {\n  display: flex;\n}\n\n/*# sourceMappingURL=data
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <app-grid-size-input [size]=\"size\" (update)=\"onUpdate($event)\"></app-grid-size-input>\n</div>"
+module.exports = "<div class=\"container\">\n  <app-grid-size-input class=\"input-container\" [size]=\"size\" (update)=\"onUpdate($event)\"></app-grid-size-input>\n</div>"
 
 /***/ }),
 
@@ -213,7 +213,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = "luxoft-assignment";
-        this.size = 6;
+        this.size = 10;
     }
     AppComponent.prototype.onUpdate = function (event) {
         this.size = event.size;
@@ -289,7 +289,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".grid-container {\n  position: relative;\n}\n.actor-container {\n  position: absolute;\n}\n.actor-wrapper {\n  position: relative;\n}\n.actor {\n  position: absolute;\n  top: -36px;\n  left: 22px;\n}\ntr {\n  border: solid 1px blue;\n}\ntd {\n  border: solid 1px blue;\n  height: 50px;\n  width: 50px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ3JpZC1wbG90L2dyaWQtcGxvdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQW1CO0NBQ3BCO0FBQ0Q7RUFDRSxtQkFBbUI7Q0FDcEI7QUFDRDtFQUNFLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0UsbUJBQW1CO0VBQ25CLFdBQVc7RUFDWCxXQUFXO0NBQ1o7QUFFRDtFQUNFLHVCQUF1QjtDQUN4QjtBQUNEO0VBQ0UsdUJBQXVCO0VBQ3ZCLGFBQWE7RUFDYixZQUFZO0NBQ2IiLCJmaWxlIjoic3JjL2FwcC9ncmlkLXBsb3QvZ3JpZC1wbG90LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZ3JpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4uYWN0b3ItY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuLmFjdG9yLXdyYXBwZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG4uYWN0b3Ige1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTM2cHg7XG4gIGxlZnQ6IDIycHg7XG59XG5cbnRyIHtcbiAgYm9yZGVyOiBzb2xpZCAxcHggYmx1ZTtcbn1cbnRkIHtcbiAgYm9yZGVyOiBzb2xpZCAxcHggYmx1ZTtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogNTBweDtcbn1cbiJdfQ== */"
+module.exports = ".grid-container {\n  position: relative;\n}\n.actor-container {\n  position: absolute;\n}\n.actor-wrapper {\n  position: relative;\n}\n.actor {\n  position: absolute;\n  top: -36px;\n  left: 22px;\n}\ntr {\n  border: solid 1px blue;\n}\ntd {\n  border: solid 1px blue;\n  height: 50px;\n  width: 50px;\n  min-width: 50px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ3JpZC1wbG90L2dyaWQtcGxvdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQW1CO0NBQ3BCO0FBQ0Q7RUFDRSxtQkFBbUI7Q0FDcEI7QUFDRDtFQUNFLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0UsbUJBQW1CO0VBQ25CLFdBQVc7RUFDWCxXQUFXO0NBQ1o7QUFFRDtFQUNFLHVCQUF1QjtDQUN4QjtBQUNEO0VBQ0UsdUJBQXVCO0VBQ3ZCLGFBQWE7RUFDYixZQUFZO0VBQ1osZ0JBQWdCO0NBQ2pCIiwiZmlsZSI6InNyYy9hcHAvZ3JpZC1wbG90L2dyaWQtcGxvdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmdyaWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLmFjdG9yLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cbi5hY3Rvci13cmFwcGVyIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLmFjdG9yIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IC0zNnB4O1xuICBsZWZ0OiAyMnB4O1xufVxuXG50ciB7XG4gIGJvcmRlcjogc29saWQgMXB4IGJsdWU7XG59XG50ZCB7XG4gIGJvcmRlcjogc29saWQgMXB4IGJsdWU7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDUwcHg7XG4gIG1pbi13aWR0aDogNTBweDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -300,7 +300,7 @@ module.exports = ".grid-container {\n  position: relative;\n}\n.actor-container 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"grid-container\">\n  <table>\n    <tr *ngFor=\"let index of range\">\n      <td *ngFor=\"let index of range\"></td>\n    </tr>\n  </table>\n  <span class=\"actor-container\">\n    <span class=\"actor-wrapper\">\n      <span class=\"actor\" id=\"actor\">\n        T\n      </span>\n    </span>\n  </span>\n</div>"
+module.exports = "<div class=\"grid-container\">\n  <table>\n    <tr *ngFor=\"let index of range\">\n      <td *ngFor=\"let index of range\"></td>\n    </tr>\n  </table>\n  <span class=\"actor-container\">\n    <span class=\"actor-wrapper\">\n      <span class=\"actor\" id=\"actor\">\n        🐈\n      </span>\n    </span>\n  </span>\n</div>"
 
 /***/ }),
 
@@ -365,7 +365,7 @@ var GridPlotComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\n  display: flex;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ3JpZC1zaXplLWlucHV0L2dyaWQtc2l6ZS1pbnB1dC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztDQUNmIiwiZmlsZSI6InNyYy9hcHAvZ3JpZC1zaXplLWlucHV0L2dyaWQtc2l6ZS1pbnB1dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG4iXX0= */"
+module.exports = ".container {\n  display: flex;\n  padding-left: 20px;\n}\n.input-container {\n  height: 20px;\n}\ninput {\n  text-align: center;\n  margin-left: 40%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ3JpZC1zaXplLWlucHV0L2dyaWQtc2l6ZS1pbnB1dC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLG1CQUFtQjtDQUNwQjtBQUNEO0VBQ0UsYUFBYTtDQUNkO0FBQ0Q7RUFDRSxtQkFBbUI7RUFDbkIsaUJBQWlCO0NBQ2xCIiwiZmlsZSI6InNyYy9hcHAvZ3JpZC1zaXplLWlucHV0L2dyaWQtc2l6ZS1pbnB1dC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBhZGRpbmctbGVmdDogMjBweDtcbn1cbi5pbnB1dC1jb250YWluZXIge1xuICBoZWlnaHQ6IDIwcHg7XG59XG5pbnB1dCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IDQwJTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -376,7 +376,7 @@ module.exports = ".container {\n  display: flex;\n}\n\n/*# sourceMappingURL=data
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input [ngModel]=\"size\" type=\"text\" (change)=\"onSizeChange($event)\">\n<!--\n    this component will recieve a method called movetarget\n-->\n<div class=\"container\">\n    <app-grid-plot [size]=\"size\" [moveNames]=\"moveName\"></app-grid-plot>\n    <app-action-buttons (stepAdded)=\"onStepAdded($event)\" (moveActor)=\"onMoveTarget($event)\"></app-action-buttons>\n    <app-steps-list [steps]=\"steps\"></app-steps-list>\n</div>"
+module.exports = "<input [ngModel]=\"size\" type=\"text\" (change)=\"onSizeChange($event)\">\n<app-action-buttons (stepAdded)=\"onStepAdded($event)\" (moveActor)=\"onMoveTarget($event)\"></app-action-buttons>\n<div class=\"container\">\n    <app-grid-plot [size]=\"size\" [moveNames]=\"moveName\"></app-grid-plot>\n    <app-steps-list [steps]=\"steps\"></app-steps-list>\n</div>"
 
 /***/ }),
 
@@ -604,7 +604,7 @@ var GridSizeInputComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0ZXBzLWxpc3Qvc3RlcHMtbGlzdC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = ".list-container {\n  min-width: 100px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3RlcHMtbGlzdC9zdGVwcy1saXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC9zdGVwcy1saXN0L3N0ZXBzLWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5saXN0LWNvbnRhaW5lciB7XG4gIG1pbi13aWR0aDogMTAwcHg7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -615,7 +615,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <ul>\n    <li *ngFor=\"let step of steps\">\n      {{step}}\n    </li>\n  </ul>\n</div>"
+module.exports = "<div class=\"list-container\">\n  <ul>\n    <li *ngFor=\"let step of steps\">\n      {{step}}\n    </li>\n  </ul>\n</div>"
 
 /***/ }),
 
