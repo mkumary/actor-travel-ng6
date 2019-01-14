@@ -13,7 +13,7 @@ export class GridSizeInputComponent implements OnInit {
 
   @Output()
   update = new EventEmitter<any>();
-
+  moveName = []
   steps = [];
   allowedMoving = true;
   movementStep = 56;
