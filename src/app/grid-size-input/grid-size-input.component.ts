@@ -49,21 +49,16 @@ export class GridSizeInputComponent implements OnInit {
     this.steps = this.actorService.getSteps();
   }
   canMoveUp() {
-    return (
-      Math.abs(this.element.offsetTop) -
-        this.containerHeight +
-        this.movementStep <
-      this.containerX
-    );
+    return this.containerHeight > Math.abs(this.element.offsetTop) + this.movementStep
   }
   canMoveDown() {
     return Math.abs(this.element.offsetTop) - this.movementStep > 0;
   }
   canmoveLeft() {
-    return this.element.offsetLeft > this.containerX + this.movementStep / 2;
+    return this.element.offsetLeft >  this.movementStep / 2;
   }
   canMoveRight() {
-    return this.element.offsetLeft < this.containerX + this.containerWidth;
+    return this.element.offsetLeft <  this.containerWidth - this.movementStep;
   }
   moveUp() {
     if (this.canMoveUp()) {
@@ -81,7 +76,7 @@ export class GridSizeInputComponent implements OnInit {
       };
       intervalId = setInterval(travel, 5);
     } else {
-      this.allowedMoving = false;
+      this.moving = false;
     }
   }
   moveDown() {
@@ -100,7 +95,7 @@ export class GridSizeInputComponent implements OnInit {
       };
       intervalId = setInterval(travel, 5);
     } else {
-      this.allowedMoving = false;
+      this.moving = false;
     }
   }
   moveLeft() {
@@ -119,7 +114,7 @@ export class GridSizeInputComponent implements OnInit {
       };
       intervalId = setInterval(travel, 5);
     } else {
-      this.allowedMoving = false;
+      this.moving = false;
     }
   }
   moveRight() {
@@ -138,7 +133,7 @@ export class GridSizeInputComponent implements OnInit {
       };
       intervalId = setInterval(travel, 5);
     } else {
-      this.allowedMoving = false;
+      this.moving = false;
     }
   }
   move() {
